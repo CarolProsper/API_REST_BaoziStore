@@ -3,11 +3,14 @@ package com.example.BaoziStore.model;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Entity
 public class Cliente {
 

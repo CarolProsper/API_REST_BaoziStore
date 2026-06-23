@@ -27,7 +27,7 @@ public class ProdutoController {
     }
 
     @GetMapping
-    public List<Produto> listar(){
+    public List<?> listar(){
         return repository.findAll();
     }
 

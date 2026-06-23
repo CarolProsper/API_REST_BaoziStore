@@ -15,11 +15,12 @@ public class Pedido {
 
     @ManyToOne
     private Cliente cliente;
-
+    
     @ManyToOne
     private Produto produto;
+    
     private Integer quantidade;
-
+    
         public Long getId() {
         return id;
     }
