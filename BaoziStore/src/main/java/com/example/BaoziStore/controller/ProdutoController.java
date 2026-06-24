@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,6 +37,20 @@ public class ProdutoController {
         return repository.findById(id).orElse(null);
     }
 
+    @PutMapping("/{id}")
+    public Produto atualizar(@PathVariable Long id,
+                             @RequestBody Produto novoProduto){
+
+        Produto produto = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+
+        produto.setNome(novoProduto.getNome());
+        produto.setPreco(novoProduto.getPreco());
+        produto.setEstoque(novoProduto.getEstoque());
+
+        return repository.save(produto);
+    }
+    
     @DeleteMapping("/{id}")
     public void excluir(@PathVariable Long id){
         repository.deleteById(id);
